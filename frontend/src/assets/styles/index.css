@@ -7,3 +7,10 @@
 main {
     min-height: calc(100vh - 72px);
 }
+
+.product__title {
+    white-space: nowrap;
+    height: 2.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
