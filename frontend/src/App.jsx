@@ -1,10 +1,9 @@
-import React from "react";
-import Header from "./components/Header";
-import { Container } from "react-bootstrap";
-import Footer from "./components/Footer";
-import { Outlet } from "react-router-dom";
 import axios from "axios";
-// axios.defaults.baseURL = "http://localhost:8000"
+import { Container } from "react-bootstrap";
+import { Outlet } from "react-router-dom";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+axios.defaults.baseURL = "http://localhost:8000";
 
 function App() {
   return (
