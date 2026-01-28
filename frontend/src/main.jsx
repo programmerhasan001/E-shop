@@ -13,6 +13,7 @@ import "./assets/styles/index.css";
 import HomeScreen from "./screens/HomeScreen.jsx";
 import ProductScreen from "./screens/ProductScreen.jsx";
 import store from "./store.js";
+import CartScreen from "./screens/CartScreen.jsx";
 
 // [
 //   {
@@ -36,8 +37,9 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<HomeScreen />} />
       <Route path="/product/:id" element={<ProductScreen />} />
-    </Route>
-  )
+      <Route path="/cart" element={<CartScreen />} />
+    </Route>,
+  ),
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -45,5 +47,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
