@@ -10,14 +10,22 @@ import {
   updateUser,
   deleteUsers,
 } from "../controllers/userController.js";
+import { protect, admin } from "../middleware/AuthMiddleware.js";
 
 const router = Router();
 
-router.route("/").post(registerUser).get(getUsers);
+router.route("/").post(registerUser).get(protect, admin, getUsers);
 router.post("/logout", logoutUser);
-router.post("/login", authUser);
+router.post("/auth", authUser);
 
-router.route("/profile").get(getUserProfile).put(updateUserProfile);
-router.route("/:id").delete(deleteUsers).get(getUserByID).put(updateUser);
+router
+  .route("/profile")
+  .get(protect, getUserProfile)
+  .put(protect, updateUserProfile);
+router
+  .route("/:id")
+  .delete(protect, admin, deleteUsers)
+  .get(protect, admin, getUserByID)
+  .put(protect, admin, updateUser);
 
 export default router;

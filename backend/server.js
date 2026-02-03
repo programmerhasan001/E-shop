@@ -2,6 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./config/db.js";
+import cookieParser from "cookie-parser";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -14,6 +15,9 @@ app.use(cors());
 // body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// cookie parser
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send("Api is running......");
